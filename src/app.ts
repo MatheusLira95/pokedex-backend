@@ -3,7 +3,6 @@ import "./setup";
 import express from "express";
 import cors from "cors";
 import "reflect-metadata";
-import axios from "axios"
 
 import connectDatabase from "./database";
 
@@ -15,7 +14,7 @@ app.use(express.json());
 
 app.get("/users", userController.getUsers);
 
-export async function init () {
+export async function init() {
   await connectDatabase();
 }
 
