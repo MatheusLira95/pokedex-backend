@@ -3,6 +3,7 @@ import "./setup";
 import express from "express";
 import cors from "cors";
 import "reflect-metadata";
+import axios from "axios"
 
 import connectDatabase from "./database";
 
