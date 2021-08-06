@@ -22,12 +22,11 @@ async function populateDb() {
       height: data.height,
       baseExp: data.base_experience,
       description: data.types[0].type.name,
-      inMyPokemons: false,
     };
 
     await connection.query(
       `INSERT INTO pokemon (name, number, image, weight, height, "baseExp", description, "inMyPokemons") 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [
         data.name,
         data.id,
@@ -36,7 +35,6 @@ async function populateDb() {
         data.height,
         data.base_experience,
         data.types[0].type.name,
-        false,
       ]
     );
     console.log(pokemon);

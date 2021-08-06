@@ -19,6 +19,4 @@ export default class User {
   "baseExp": number;
   @Column()
   "description": string;
-  @Column()
-  "inMyPokemons": boolean;
 }
