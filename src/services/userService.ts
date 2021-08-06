@@ -6,9 +6,7 @@ import User from "../entities/User";
 import * as sessionService from "../services/sessionService";
 
 export async function getUsers() {
-  const users = await getRepository(User).find({
-    select: ["id", "email"],
-  });
+  const users = await getRepository(User).find();
 
   return users;
 }
