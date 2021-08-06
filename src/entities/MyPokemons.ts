@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+
+import Pokemon from "../entities/Pokemon";
+import User from "../entities/User";
 
 @Entity("pokemons_user")
 export default class MyPokemons {
@@ -10,4 +13,10 @@ export default class MyPokemons {
 
   @Column()
   pokemonId: number;
+
+  @ManyToOne(() => User, (user) => user.myPokemon)
+  user: User;
+
+  @ManyToOne(() => Pokemon, (pokemon) => pokemon.myPokemon)
+  pokemon: Pokemon;
 }

@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import MyPokemons from "./MyPokemons";
 
 interface Description {}
 @Entity("pokemon")
-export default class User {
+export default class Pokemon {
   @PrimaryGeneratedColumn()
   "id": number;
   @Column()
@@ -19,4 +20,7 @@ export default class User {
   "baseExp": number;
   @Column()
   "description": string;
+
+  @OneToMany(() => MyPokemons, (myPokemon) => myPokemon.user)
+  myPokemon: MyPokemons[];
 }
