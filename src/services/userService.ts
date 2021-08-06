@@ -33,7 +33,6 @@ export async function createUser(email: string, password: string) {
 export async function getUserByEmail(email: string, password: string) {
   const user = await getRepository(User).findOne({
     where: { email },
-    relations: ["pokemons_user"],
   });
 
   if (user && bcrypt.compareSync(password, user.password)) {
