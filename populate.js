@@ -12,7 +12,7 @@ const config = {
 const connection = new Pool(config);
 async function populateDb() {
   let id = 1;
-  while (id < 21) {
+  while (id < 151) {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const pokemon = {
       name: data.name,
