@@ -10,10 +10,8 @@ export default async function verificaToken(
 ) {
   const authorization = req.headers["authorization"];
   const token = authorization.split("Bearer ")[1];
-  console.log(token);
   const repository = getRepository(Sessions);
   const session = await repository.findOne({ token });
-  console.log(session);
 
   if (!session) {
     return res.sendStatus(401);
