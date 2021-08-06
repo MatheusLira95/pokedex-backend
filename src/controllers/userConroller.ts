@@ -33,6 +33,7 @@ export async function authorizate(req: Request, res: Response) {
     if (token === null) {
       return res.sendStatus(401);
     }
+
     res.status(200).send(token);
   } catch (err) {
     console.log(err);

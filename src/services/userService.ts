@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import bcrypt, { hash } from "bcrypt";
 import { v4 as uuid } from "uuid";
 
 import User from "../entities/User";
+import * as sessionService from "../services/sessionService";
 
 export async function getUsers() {
   const users = await getRepository(User).find({
@@ -37,10 +37,11 @@ export async function getUserByEmail(email: string, password: string) {
 
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = uuid();
+
+    await sessionService.createSession(token, user.id);
+
     return token;
   } else {
     return null;
   }
 }
-
-export async function validatePassword(password: string) {}
