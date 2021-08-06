@@ -34,7 +34,7 @@ export async function authorizate(req: Request, res: Response) {
       return res.sendStatus(401);
     }
 
-    res.status(200).send(token);
+    res.status(200).send({ token });
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
