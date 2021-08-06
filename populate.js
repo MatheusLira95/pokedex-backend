@@ -12,7 +12,7 @@ const config = {
 const connection = new Pool(config);
 async function populateDb() {
   let id = 1;
-  while (id < 151) {
+  while (id < 51) {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const pokemon = {
       name: data.name,
@@ -25,7 +25,7 @@ async function populateDb() {
     };
 
     await connection.query(
-      `INSERT INTO pokemon (name, number, image, weight, height, "baseExp", description, "inMyPokemons") 
+      `INSERT INTO pokemon (name, number, image, weight, height, "baseExp", description) 
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [
         data.name,
